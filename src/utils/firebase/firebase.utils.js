@@ -45,7 +45,7 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
 export const db = getFirestore();
 
 // create User with Google account
-export const createUserDocumentFromAuth = async (userAuth, { otherParams }) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInfo = {}) => {
   // if no user available, just return nothing
   if (!userAuth) return;
   // user document creating
@@ -63,6 +63,7 @@ export const createUserDocumentFromAuth = async (userAuth, { otherParams }) => {
         displayName,
         email,
         createdAt,
+        ...additionalInfo
       })
       alert('User successfully created!')
     } catch (err) {
@@ -74,7 +75,7 @@ export const createUserDocumentFromAuth = async (userAuth, { otherParams }) => {
 }
 
 
-export const createAuthUserWithEmailAndPassword = async (email, password, { otherParams }) => {
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password)
@@ -88,4 +89,12 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => await signOut(auth)
 
-export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);
+
+
+// {
+// next: (user) => {}
+// error: (err) => {}
+// complete: () => {}
+// }
