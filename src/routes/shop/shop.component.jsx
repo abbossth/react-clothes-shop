@@ -5,7 +5,7 @@ import "./shop.styles.scss"
 
 const Shop = () => {
   const { products } = useContext(ProductContext)
-  console.log(products)
+  
   return (
     <div className="products-container">
       {
