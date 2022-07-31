@@ -1,7 +1,7 @@
 .cart-dropdown-container {
   position: absolute;
   width: 350px;
-  height: 500px;
+  height: 470px;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -17,10 +17,26 @@
   }
 
   .cart-items {
-    height: 240px;
+    height: 80%;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #fff;
+      border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #bbb;
+      border-radius: 8px;
+    }
   }
 
   button {
