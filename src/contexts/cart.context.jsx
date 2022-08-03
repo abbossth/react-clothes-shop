@@ -1,10 +1,11 @@
+
 import { useEffect } from "react";
 import { createContext, useState } from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
   // find if the cartItems contains productToAdd
   const existingCartItem = cartItems.find(item => item.id === productToAdd.id) 
-  console.log(existingCartItem);
+  
   // if yes, just increment the quantity
   if (existingCartItem) {
     return cartItems.map(cartItem => cartItem.id === productToAdd.id
@@ -17,9 +18,15 @@ const addCartItem = (cartItems, productToAdd) => {
   }
 }
 const removeCartItem = (cartItems, productToRemove) => {
-    return cartItems.map(cartItem => cartItem.id === productToRemove.id
-      ? { ...cartItem, quantity: cartItem.quantity - 1 }
-      : cartItem)
+  const existingCartItem = cartItems.find(item => item.id === productToRemove.id) 
+  
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter(item => item.id !== existingCartItem.id)
+  }
+
+  return cartItems.map(item => 
+    item.id === productToRemove.id ? {...item, quantity: item.quantity -1 } : item)
+
 }
 
 export const CartContext = createContext({
