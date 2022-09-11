@@ -6,7 +6,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPES } from "../button/button.component";
 
 const defaultFormFields = {
   email: "",
@@ -75,7 +75,7 @@ const SignInForm = () => {
           <Button type={"submit"} children={"Sign In"} />
           <Button
             type={"button"}
-            buttonType={"google"}
+            buttonType={BUTTON_TYPES.google}
             children={"Sign in with google"}
             onClick={signInWithGoogle}
           />
