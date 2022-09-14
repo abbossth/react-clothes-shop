@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./sign-in.styles.scss";
+import { SignInContainer } from "./sign-in.styles.jsx";
 import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
@@ -46,7 +46,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
+    <SignInContainer>
       <h2>I already have an account.</h2>
       <p>Sign In With email and password</p>
       <form onSubmit={handleSubmit}>
@@ -81,7 +81,7 @@ const SignInForm = () => {
           />
         </div>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
