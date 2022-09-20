@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SignUpContainer } from "./sign-up.styles.jsx";
+import { SignUpContainer } from "./sign-up.styles";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
